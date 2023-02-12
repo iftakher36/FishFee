@@ -1,4 +1,5 @@
 
+import 'package:fishfee/widget/custom_shape.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -35,18 +36,42 @@ class RestaurantItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.only(topLeft: Radius.circular(15),topRight: Radius.circular(15)),
-              child: Container(
-                height: 140,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(imagePath),
-                        fit: BoxFit.cover
+            Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(topLeft: Radius.circular(15),topRight: Radius.circular(15)),
+                  child: Container(
+                    height: 140,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(imagePath),
+                            fit: BoxFit.cover
 
-                    )
+                        )
+                    ),
+                  ),
                 ),
-              ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 12.0,left: 12),
+                  child: ClipPath(
+                    clipper: PolygonRightClip(),
+                    child: Container(
+                      color: Colors.green.shade700,
+                      constraints: const BoxConstraints(
+                        maxWidth: 100,
+                        minHeight: 20
+                      ),
+                      child: Row(
+                        children: const [
+                          SizedBox(width: 5,),
+                          Icon(Icons.star,color: Colors.white,size: 15,),
+                          Text("\$0 Delivery ",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 12),),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: 12,),
             Expanded(
