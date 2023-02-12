@@ -69,7 +69,7 @@ class _WelComePageState extends State<WelComePage> {
                         curve: Curves.easeInOutCubic);
                     setState(() {});
                   } else {
-                    Navigator.pushNamed(context, Constant.findingRoute);
+                    Navigator.pushNamed(context, Constant.hostRoute);
                   }
                 }
               },
